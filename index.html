@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Filter and Sort</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>CSV Filter and Sort</h1>
+        <input type="text" id="filterInput" placeholder="Filter by Code...">
+        <table id="csvTable">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">Code</th>
+                    <th onclick="sortTable(1)">Year</th>
+                    <th onclick="sortTable(2)">CI</th>
+                    <th onclick="sortTable(3)">HP</th>
+                    <th onclick="sortTable(4)">Equipment</th>
+                    <th onclick="sortTable(5)">Automobile</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
