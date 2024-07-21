@@ -9,16 +9,23 @@
 <body>
     <div class="container">
         <h1>CSV Filter and Sort</h1>
-        <input type="text" id="filterInput" placeholder="Filter by Code...">
         <table id="csvTable">
             <thead>
                 <tr>
-                    <th onclick="sortTable(0)">Code</th>
-                    <th onclick="sortTable(1)">Year</th>
-                    <th onclick="sortTable(2)">CI</th>
-                    <th onclick="sortTable(3)">HP</th>
-                    <th onclick="sortTable(4)">Equipment</th>
-                    <th onclick="sortTable(5)">Automobile</th>
+                    <th>Code <span class="sort-arrow" onclick="sortTable(0)">⇅</span></th>
+                    <th>Year <span class="sort-arrow" onclick="sortTable(1)">⇅</span></th>
+                    <th>CI <span class="sort-arrow" onclick="sortTable(2)">⇅</span></th>
+                    <th>HP <span class="sort-arrow" onclick="sortTable(3)">⇅</span></th>
+                    <th>Equipment <span class="sort-arrow" onclick="sortTable(4)">⇅</span></th>
+                    <th>Automobile <span class="sort-arrow" onclick="sortTable(5)">⇅</span></th>
+                </tr>
+                <tr>
+                    <th><input type="text" id="searchCode" placeholder="Search Code" oninput="filterTable()"></th>
+                    <th><input type="text" id="searchYear" placeholder="Search Year" oninput="filterTable()"></th>
+                    <th><input type="text" id="searchCI" placeholder="Search CI" oninput="filterTable()"></th>
+                    <th><input type="text" id="searchHP" placeholder="Search HP" oninput="filterTable()"></th>
+                    <th><input type="text" id="searchEquipment" placeholder="Search Equipment" oninput="filterTable()"></th>
+                    <th><input type="text" id="searchAutomobile" placeholder="Search Automobile" oninput="filterTable()"></th>
                 </tr>
             </thead>
             <tbody>

@@ -1,7 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
     const tableBody = document.querySelector('#csvTable tbody');
-    const filterInput = document.getElementById('filterInput');
+    const searchFields = [
+        document.getElementById('searchCode'),
+        document.getElementById('searchYear'),
+        document.getElementById('searchCI'),
+        document.getElementById('searchHP'),
+        document.getElementById('searchEquipment'),
+        document.getElementById('searchAutomobile')
+    ];
     let rows = [];
+    let originalData = [];
 
     function loadCSV() {
         fetch('motorCodeDB.csv')
@@ -22,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </tr>`;
                 });
 
+                originalData = [...rows];
                 renderTable(rows);
             })
             .catch(error => console.error('Error fetching CSV:', error));
@@ -32,19 +41,24 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function filterTable() {
-        const filterValue = filterInput.value.toUpperCase();
-        const filteredRows = rows.filter(row => row.toUpperCase().includes(filterValue));
+        const filterValues = searchFields.map(input => input.value.toUpperCase());
+        const filteredRows = originalData.filter(row => {
+            return filterValues.every((value, index) => {
+                const cellText = row.split('<td>')[index + 1].split('</td>')[0].toUpperCase();
+                return cellText.includes(value);
+            });
+        });
+        rows = filteredRows;
         renderTable(filteredRows);
     }
 
     function sortTable(n) {
-        let rowsArray = Array.from(tableBody.rows);
         const isAsc = tableBody.getAttribute('data-sort-order') !== 'asc';
         tableBody.setAttribute('data-sort-order', isAsc ? 'asc' : 'desc');
 
-        rowsArray.sort((a, b) => {
-            const cellA = a.cells[n].innerText;
-            const cellB = b.cells[n].innerText;
+        rows.sort((a, b) => {
+            const cellA = a.split('<td>')[n + 1].split('</td>')[0];
+            const cellB = b.split('<td>')[n + 1].split('</td>')[0];
 
             if (!isNaN(cellA) && !isNaN(cellB)) {
                 return isAsc ? cellA - cellB : cellB - cellA;
@@ -53,9 +67,9 @@ document.addEventListener('DOMContentLoaded', function() {
             return isAsc ? cellA.localeCompare(cellB) : cellB.localeCompare(cellA);
         });
 
-        renderTable(rowsArray.map(row => row.outerHTML));
+        renderTable(rows);
     }
 
-    filterInput.addEventListener('input', filterTable);
+    searchFields.forEach(input => input.addEventListener('input', filterTable));
     loadCSV();
 });

@@ -18,10 +18,10 @@ h1 {
     margin-bottom: 20px;
 }
 
-#filterInput {
+input[type="text"] {
     width: 100%;
     padding: 10px;
-    margin-bottom: 20px;
+    margin: 0;
     border: 1px solid #ccc;
 }
 
@@ -34,9 +34,18 @@ th, td {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ddd;
-    cursor: pointer;
 }
 
-th:hover {
-    background-color: #f1f1f1;
+.sort-arrow {
+    cursor: pointer;
+    font-size: 0.8em;
+    margin-left: 5px;
+}
+
+th:hover .sort-arrow {
+    color: #000;
+}
+
+th .sort-arrow {
+    color: #ccc;
 }
