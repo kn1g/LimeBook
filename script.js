@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let sortOrder = Array(searchFields.length).fill('asc');
 
     function loadCSV() {
-        fetch('data.csv')
+        fetch('motorCodeDB.csv')
             .then(response => response.text())
             .then(data => {
                 const lines = data.split('\n');
