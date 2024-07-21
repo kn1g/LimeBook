@@ -16,30 +16,30 @@
             POCKET GUIDE
             1955-1991</p>
             <p>Complete Information and engine code + equipment details can be found <a target="_blank" href="https://www.corvetteforum.com/forums/attachments/c1-and-c2-corvettes/48257239d1519196818-lime-book-in-pdf-format-lime_book_2018.pdf">here</a></p>
-        <table id="csvTable">
-            <thead>
-                <tr>
-                    <th>Code <span class="sort-arrow" onclick="sortTable(0)">⇅</span></th>
-                    <th>Year <span class="sort-arrow" onclick="sortTable(1)">⇅</span></th>
-                    <th>CI <span class="sort-arrow" onclick="sortTable(2)">⇅</span></th>
-                    <th>HP <span class="sort-arrow" onclick="sortTable(3)">⇅</span></th>
-                    <th>Equipment <span class="sort-arrow" onclick="sortTable(4)">⇅</span></th>
-                    <th>Automobile <span class="sort-arrow" onclick="sortTable(5)">⇅</span></th>
-                </tr>
-                <tr>
-                    <th><input type="text" id="searchCode" placeholder="Search Code" oninput="filterTable()"></th>
-                    <th><input type="text" id="searchYear" placeholder="Search Year" oninput="filterTable()"></th>
-                    <th><input type="text" id="searchCI" placeholder="Search CI" oninput="filterTable()"></th>
-                    <th><input type="text" id="searchHP" placeholder="Search HP" oninput="filterTable()"></th>
-                    <th><input type="text" id="searchEquipment" placeholder="Search Equipment" oninput="filterTable()"></th>
-                    <th><input type="text" id="searchAutomobile" placeholder="Search Automobile" oninput="filterTable()"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Data will be inserted here -->
-            </tbody>
-        </table>
-    </div>
-    <script src="script.js"></script>
-</body>
-</html>
+            <table id="csvTable">
+                <thead>
+                    <tr>
+                        <th>Code <span class="sort-arrow" data-index="0">⇅</span></th>
+                        <th>Year <span class="sort-arrow" data-index="1">⇅</span></th>
+                        <th>CI <span class="sort-arrow" data-index="2">⇅</span></th>
+                        <th>HP <span class="sort-arrow" data-index="3">⇅</span></th>
+                        <th>Equipment <span class="sort-arrow" data-index="4">⇅</span></th>
+                        <th>Automobile <span class="sort-arrow" data-index="5">⇅</span></th>
+                    </tr>
+                    <tr>
+                        <th><input type="text" id="searchCode" placeholder="Search Code" oninput="filterTable()"></th>
+                        <th><input type="text" id="searchYear" placeholder="Search Year" oninput="filterTable()"></th>
+                        <th><input type="text" id="searchCI" placeholder="Search CI" oninput="filterTable()"></th>
+                        <th><input type="text" id="searchHP" placeholder="Search HP" oninput="filterTable()"></th>
+                        <th><input type="text" id="searchEquipment" placeholder="Search Equipment" oninput="filterTable()"></th>
+                        <th><input type="text" id="searchAutomobile" placeholder="Search Automobile" oninput="filterTable()"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+        <script src="script.js"></script>
+    </body>
+    </html>

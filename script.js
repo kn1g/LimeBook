@@ -8,11 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('searchEquipment'),
         document.getElementById('searchAutomobile')
     ];
+    const sortArrows = document.querySelectorAll('.sort-arrow');
     let rows = [];
     let originalData = [];
+    let sortOrder = Array(searchFields.length).fill('asc');
 
     function loadCSV() {
-        fetch('motorCodeDB.csv')
+        fetch('data.csv')
             .then(response => response.text())
             .then(data => {
                 const lines = data.split('\n');
@@ -53,8 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function sortTable(n) {
-        const isAsc = tableBody.getAttribute('data-sort-order') !== 'asc';
-        tableBody.setAttribute('data-sort-order', isAsc ? 'asc' : 'desc');
+        const isAsc = sortOrder[n] === 'asc';
+        sortOrder[n] = isAsc ? 'desc' : 'asc';
 
         rows.sort((a, b) => {
             const cellA = a.split('<td>')[n + 1].split('</td>')[0];
@@ -71,5 +73,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     searchFields.forEach(input => input.addEventListener('input', filterTable));
+    sortArrows.forEach(arrow => {
+        arrow.addEventListener('click', function() {
+            sortTable(parseInt(this.getAttribute('data-index')));
+        });
+    });
+
     loadCSV();
 });
